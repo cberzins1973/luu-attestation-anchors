@@ -6,12 +6,12 @@
     "verificationUrl": "https://leadershipunderuncertainty.org/credibility"
   },
   "dateKey": "2026-07-02",
-  "rootHash": "eb35d99396e8ec07b3051c5a8dc865638866f774b4704efd78476976d7100d7b",
-  "leafCount": 22,
-  "sealedAt": "2026-07-02T07:46:06.204Z",
+  "rootHash": "c7c1b14f27cc007aa1c5347daf30d774db3e3644a739ec9c5b0a72545d5d83d9",
+  "leafCount": 25,
+  "sealedAt": "2026-07-02T08:35:27.195Z",
   "previousDayRootHash": "dbe533aaa05b648bb3c80c18b8d188dde7d3fc70d7d405dd8506cf0548eb697b",
   "summary": {
-    "forecastsSealed": 22,
+    "forecastsSealed": 25,
     "treeDepth": 6
   },
   "verification": {
