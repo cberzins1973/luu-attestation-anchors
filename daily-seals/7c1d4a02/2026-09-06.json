@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "system": "Leadership Under Uncertainty — Forecast Integrity",
+    "description": "Cryptographic timestamp anchor for AI forecast integrity",
+    "verificationUrl": "https://leadershipunderuncertainty.org/credibility"
+  },
+  "dateKey": "2026-09-06",
+  "rootHash": "243c839cd0d7b5afe8c485f5419793c9a5b5752eebda82598b8c608e620e4059",
+  "leafCount": 12,
+  "sealedAt": "2026-09-06T23:55:56.930Z",
+  "previousDayRootHash": "ffb26c78aea5b55028fab4ddd859bd7bc79b0f335b1b2576c6699ebfad6ee41e",
+  "summary": {
+    "forecastsSealed": 12,
+    "treeDepth": 5
+  },
+  "verification": {
+    "algorithm": "SHA-256",
+    "treeType": "Merkle Binary Tree",
+    "pairHashingOrder": "sorted-concatenation",
+    "apiEndpoint": "/api/public/forecast-integrity-proof"
+  }
+}
