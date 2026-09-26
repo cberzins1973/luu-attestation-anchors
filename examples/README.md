@@ -9,6 +9,7 @@ trusting LUU**, without making any network calls, on any machine with Node 18+.
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `sample-seal.json` | A real-format seal you can use to test the verifier. The `rootHash` is for illustration; it doesn't correspond to a real evidence pack.                          |
 | `walk-chain.mjs`   | Walks every `YYYY-MM-DD.json` seal in a directory and asserts each one's `previousDayRootHash` resolves to a real published `rootHash`. Zero deps, zero network. |
+| `verify-inclusion.mjs` | Checks that one record is included under a root published here: re-hashes the record, folds its proof, fetches the root from this repository at the named commit, and reads GitHub's push time. Zero dependencies, Node 18+. The repository name is fixed in the script, never read from the file being checked. |
 
 ## Walk a chain
 
