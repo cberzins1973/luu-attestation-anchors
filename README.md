@@ -16,7 +16,7 @@ The script re-hashes the record, folds the proof to a root, fetches the publishe
 
 ## Walk the chain
 
-Each daily file names the previous day's root. To confirm that every link resolves to a root published here:
+Each file names the root of the seal before it in the same scope. Newer seals also declare, in a `chain` block, how many days between the two had no seal, and no seal is ever back-dated to fill a missing day. To confirm that every link resolves to a root published here:
 
 ```bash
 node examples/walk-chain.mjs daily-seals/
