@@ -5,10 +5,10 @@ trusting LUU**, without making any network calls, on any machine with Node 18+.
 
 ## Files
 
-| File               | Purpose                                                                                                                                                          |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sample-seal.json` | A real-format seal you can use to test the verifier. The `rootHash` is for illustration; it doesn't correspond to a real evidence pack.                          |
-| `walk-chain.mjs`   | Walks every `YYYY-MM-DD.json` seal in a directory and asserts each one's `previousDayRootHash` resolves to a real published `rootHash`. Zero deps, zero network. |
+| File               | Purpose                                                                                                                                                                                                   |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sample-seal.json` | A real-format seal you can use to test the verifier. The `rootHash` is for illustration; it doesn't correspond to a real evidence pack.                                                                   |
+| `walk-chain.mjs`   | Walks every `YYYY-MM-DD.json` seal in a directory and checks each seal's link against the chain as it stood when that seal was made — declared gaps pass, undeclared ones break. Zero deps, zero network. |
 | `verify-inclusion.mjs` | Checks that one record is included under a root published here: re-hashes the record, folds its proof, fetches the root from this repository at the named commit, and reads GitHub's push time. Zero dependencies, Node 18+. The repository name is fixed in the script, never read from the file being checked. |
 
 ## Walk a chain
@@ -21,43 +21,51 @@ node examples/walk-chain.mjs daily-seals/
 node examples/walk-chain.mjs daily-seals/abc12345/
 ```
 
-Output for an intact chain (a link that resolves to a published predecessor is
-marked `✓ linked`):
+Output for an intact chain:
 
 ```
-2026-07-20: leaves=172  root=3ead1688680c9230...  ✓ linked
-2026-07-21: leaves=123  root=74ee51f6c97d2c8a...  ✓ linked
-2026-07-22: leaves=58   root=6bbaaf2a9d9a1f12...  ✓ linked
+2026-09-16: leaves=15  root=952c0d44f66cbb9f...  ✓ linked
+2026-09-17: leaves=6   root=757dc22a1ec47585...  ✓ linked
+2026-09-21: leaves=63  root=e15404233990d613...  legacy gap: 3 day(s) with no seal since 2026-09-17; walk continues there
 
-[walk-chain] OK — 26 seal(s), every link resolves to a published root (1 boundary note).
+[walk-chain] OK — 162 seal(s), every link verified; 15 legacy gap(s); 1 note(s).
 ```
 
-The "boundary note" is the earliest seal in the directory: it legitimately
-chains to a root published in an earlier window (or the pre-multitenancy global
-chain), so its predecessor isn't in this directory. That is expected, not a
-break.
+Add `--json` for a machine-readable result (`ok`, `counts`, `gaps`, `notes`,
+`breaks`).
 
-If a seal has been tampered with — so that the next day's `previousDayRootHash`
-no longer resolves to any published root — you get a clear break and a non-zero
-exit code:
+### The rule
+
+Every seal is judged by the chain **as it stood when that seal was made** (its
+`sealedAt`) — a seal can only link to what already existed.
+
+- A seal with a `chain` block (from September 2026) declares its predecessor
+  and the number of days in between with no seal. It passes when the root, the
+  date and the day count all check out and no seal in between already existed.
+- A seal without one is judged by the rule it was written under: its
+  `previousDayRootHash` is the previous calendar day's root, or `null` when that
+  day had no seal yet. That `null` is reported as a **legacy gap** and the walk
+  continues from the most recent earlier seal.
+- A **break** is anything else: a link to the wrong root (even one published
+  elsewhere in the directory), an undeclared or miscounted gap, a `null` link
+  while the previous day's seal already existed, a malformed `chain` block, or
+  an old-format seal made after a new-format one.
 
 ```
-[walk-chain] BREAK at 2026-07-20
-  previousDayRootHash: 74ee51f6...<the altered predecessor>
-  no published seal has that rootHash (dropped/unpublished predecessor).
+[walk-chain] BREAK at 2026-09-21 (seal_chain_link_mismatch)
+  previous root 6342e4cf6153… != 2026-09-17 root 757dc22a1ec4…
 
 [walk-chain] FAIL — 1 genuine break(s) detected.
 ```
 
-### Why existence-based, not file-adjacent
+The earliest seal in a directory may link to a seal outside it when you verify a
+partial window; that is reported as a boundary note, not a break. One historical
+anomaly — the 2026-03-09 global seal, written with a `null` link by two
+concurrent backfill runs — is disclosed in the script and accepted by its exact
+root only.
 
-Seals are only produced on days the sealing job ran, and the global chain and
-each workspace chain are separate lineages. A naive check that compares each
-file to the immediately-preceding file would report a "break" across any gap or
-lineage boundary — a false alarm, not a real integrity failure. `walk-chain.mjs`
-instead builds the set of all published roots and verifies that every
-`previousDayRootHash` points into it. This is the same check the public
-`/credibility` page runs server-side, so the two agree.
+This is the same rule the public `/credibility` page and the nightly integrity
+sentinel apply server-side, so the three agree.
 
 ## Verify a specific evidence pack
 
