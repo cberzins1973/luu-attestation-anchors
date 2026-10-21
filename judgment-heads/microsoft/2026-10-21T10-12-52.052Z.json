@@ -1,0 +1,26 @@
+{
+  "format": "luu-judgment-head/1",
+  "about": "The newest record of each chain of this judgment when this file was committed, named by its fingerprint (the SHA-256 of the record under RFC 8785). From the time GitHub records for this commit, a record named here cannot be replaced without the replacement showing: its fingerprint would differ from the one in this file. The daily root in daily-seals/ covers the same records once their day is sealed.",
+  "demo": "microsoft",
+  "publishedAt": "2026-10-21T10:12:52.052Z",
+  "trigger": "changes",
+  "heads": [
+    {
+      "artifactType": "judgment_state",
+      "sequence": 7,
+      "contentHash": "135974d9bcf88ea4f15e4287d94365265201a8f98def173d5859415eafef4004",
+      "recordedAt": "2026-10-20T23:47:01.333Z"
+    },
+    {
+      "artifactType": "judgment_change",
+      "sequence": 11,
+      "contentHash": "3b4bc4cb5d44f0ea12a6131938f0e0dfe5ad17230401894d02c7e8cacc726213",
+      "recordedAt": "2026-10-21T10:10:01.468Z"
+    }
+  ],
+  "check": {
+    "states": "https://leadershipunderuncertainty.org/api/v1/public/judgment/microsoft/states",
+    "changes": "https://leadershipunderuncertainty.org/api/v1/public/judgment/microsoft/changes",
+    "proof": "https://leadershipunderuncertainty.org/api/public/forecast-integrity-proof?contentHash=<contentHash>"
+  }
+}
