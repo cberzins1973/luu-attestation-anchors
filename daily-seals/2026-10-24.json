@@ -1,0 +1,78 @@
+{
+  "about": {
+    "version": "1.1",
+    "system": "Leadership Under Uncertainty — Forecast Integrity",
+    "description": "The daily Merkle root over the records sealed in this tree: forecasts, judgment records and other project records, each a SHA-256 fingerprint. Only the root and the shape of the tree are published here, never a record's content.",
+    "verificationUrl": "https://leadershipunderuncertainty.org/credibility"
+  },
+  "dateKey": "2026-10-24",
+  "rootHash": "d6ab4fb3c9d1f8e51703be9603ea1d20a2434c138141121a659995f612db0271",
+  "leafCount": 42,
+  "sealedAt": "2026-10-24T23:59:04.488Z",
+  "previousDayRootHash": "8112703847c9ef6230ddceec2a51be161ceb4bed5502bee7140bb7ac78a19179",
+  "chain": {
+    "version": 2,
+    "previousSealDateKey": "2026-10-23",
+    "gapDays": 0
+  },
+  "summary": {
+    "recordsSealed": 42,
+    "treeDepth": 7
+  },
+  "judgmentHeads": [
+    {
+      "demo": "ai-compute",
+      "artifactType": "judgment_state",
+      "sequence": 12,
+      "contentHash": "ff19a8ccd8f0011e8e25551493be14494e124926eaa60fc2b9dfa37d22081458"
+    },
+    {
+      "demo": "ai-compute-v2",
+      "artifactType": "judgment_state",
+      "sequence": 9,
+      "contentHash": "bf9314477fb6e7cf932e4129cc9dfabf2e3b059f7865417b29e70cee013de73b"
+    },
+    {
+      "demo": "cohere",
+      "artifactType": "judgment_state",
+      "sequence": 11,
+      "contentHash": "9b207b0ed945436144274163de5b6b425777a390aa37c9e05c2da97e7ef4826b"
+    },
+    {
+      "demo": "cohere-v2",
+      "artifactType": "judgment_state",
+      "sequence": 9,
+      "contentHash": "25a4fa37ef74be7b68e370d1924dc8f13966b378a991255864755e5b7f0a7fa7"
+    },
+    {
+      "demo": "cohere-v2",
+      "artifactType": "judgment_change",
+      "sequence": 25,
+      "contentHash": "2cfcad08c43f28bd2b9bbb85fba4538a158c1a9733f05bb12000d182c3847aa7"
+    },
+    {
+      "demo": "microsoft",
+      "artifactType": "judgment_state",
+      "sequence": 11,
+      "contentHash": "06ad38b64c695d36b3119222f40c924b8dea66d74d51863dabb4ab2ad00006a8"
+    },
+    {
+      "demo": "microsoft-v2",
+      "artifactType": "judgment_state",
+      "sequence": 9,
+      "contentHash": "2b5daa6bb54382902746f5aef297c67ee5e75b5f4ca928c2de277f4c2d6b41c5"
+    },
+    {
+      "demo": "microsoft-v2",
+      "artifactType": "judgment_change",
+      "sequence": 17,
+      "contentHash": "35999ce1b24c90a8bd5ad07251ea8ab5c6f3ecef79f59a08ee190745d9016124"
+    }
+  ],
+  "verification": {
+    "algorithm": "SHA-256",
+    "treeType": "Merkle Binary Tree",
+    "pairHashingOrder": "sorted-concatenation",
+    "apiEndpoint": "https://leadershipunderuncertainty.org/api/public/forecast-integrity-proof"
+  }
+}
