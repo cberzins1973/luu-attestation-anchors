@@ -6,6 +6,7 @@ This repository contains cryptographic timestamps for AI decision-logging and fo
 
 | Date | Root Hash | Artifacts | Link |
 |------|-----------|-----------|------|
+| 2026-11-04 | `e29be219e9781a08...` | 4 | [View](2026-11-04.json) |
 | 2026-11-02 | `746f3204f8c48638...` | 3 | [View](2026-11-02.json) |
 | 2026-10-31 | `13b624789701a02e...` | 3 | [View](2026-10-31.json) |
 | 2026-10-30 | `9f06e8a2ef74a6bd...` | 3 | [View](2026-10-30.json) |
