@@ -1,0 +1,28 @@
+{
+  "about": {
+    "version": "1.1",
+    "system": "Leadership Under Uncertainty — Forecast Integrity",
+    "description": "The daily Merkle root over the records sealed in this tree: forecasts, judgment records and other project records, each a SHA-256 fingerprint. Only the root and the shape of the tree are published here, never a record's content.",
+    "verificationUrl": "https://leadershipunderuncertainty.org/credibility"
+  },
+  "dateKey": "2026-11-15",
+  "rootHash": "44ae57fef93e8c9daab39c493bed82ea07bf906701289edb9bb52235a67935c4",
+  "leafCount": 14,
+  "sealedAt": "2026-11-15T23:56:10.207Z",
+  "previousDayRootHash": "c4eba140664d1ded77363ce3652cadc2b4f23697e81e92e4984f27e4633b5509",
+  "chain": {
+    "version": 2,
+    "previousSealDateKey": "2026-11-14",
+    "gapDays": 0
+  },
+  "summary": {
+    "recordsSealed": 14,
+    "treeDepth": 5
+  },
+  "verification": {
+    "algorithm": "SHA-256",
+    "treeType": "Merkle Binary Tree",
+    "pairHashingOrder": "sorted-concatenation",
+    "apiEndpoint": "https://leadershipunderuncertainty.org/api/public/forecast-integrity-proof"
+  }
+}
